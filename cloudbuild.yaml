@@ -28,7 +28,7 @@ steps:
     args:
       - 'build'
       - '-t'
-      - 'gcr.io/black-beach-416616/project:$TAG_NAME'
+      - 'gcr.io/black-beach-416616/project:$BRANCH_NAME-$COMMIT_SHA'
       - '-t'
       - 'gcr.io/black-beach-416616/project:latest'
       - '.'
