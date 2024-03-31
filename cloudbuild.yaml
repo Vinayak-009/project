@@ -13,7 +13,6 @@ steps:
       - |
         export CLOUDSDK_COMPUTE_REGION=us-central1
         export CLOUDSDK_COMPUTE_ZONE=us-central1-a  # Replace with your GKE cluster's zone
-        export CLOUDSDK_CONTAINER_CLUSTER=cluster-1  # Replace with your GKE cluster's name
         gcloud container clusters get-credentials $CLOUDSDK_CONTAINER_CLUSTER --region=$CLOUDSDK_COMPUTE_REGION
 
   # Step 2: Pull Docker image
@@ -42,7 +41,6 @@ steps:
       - |
         export CLOUDSDK_COMPUTE_REGION=us-central1
         export CLOUDSDK_COMPUTE_ZONE=us-central1-a  # Replace with your GKE cluster's zone
-        export CLOUDSDK_CONTAINER_CLUSTER=cluster-1  # Replace with your GKE cluster's name
         kubectl apply -f kubernetes-manifests/
 
   # Step 5: Set image for deployment
@@ -53,7 +51,6 @@ steps:
       - |
         export CLOUDSDK_COMPUTE_REGION=us-central1
         export CLOUDSDK_COMPUTE_ZONE=us-central1-a  # Replace with your GKE cluster's zone
-        export CLOUDSDK_CONTAINER_CLUSTER=cluster-1  # Replace with your GKE cluster's name
         kubectl set image deployment project project=gcr.io/black-beach-416616/project:$BRANCH_NAME-$COMMIT_SHA
 
 # Push images to Google Container Registry with tags
