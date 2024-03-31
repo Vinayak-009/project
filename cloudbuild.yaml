@@ -12,6 +12,7 @@ steps:
       - '-c'
       - |
         gcloud beta container --project "black-beach-416616" clusters create "cluster-1" \
+        --region=us-central1 \
         --no-enable-basic-auth \
         --cluster-version "1.27.8-gke.1067004" \
         --release-channel "regular" \
@@ -40,6 +41,7 @@ steps:
         --binauthz-evaluation-mode=DISABLED \
         --enable-managed-prometheus \
         --enable-shielded-nodes
+
 
   # Step 2: Authenticate with GKE
   - name: 'gcr.io/cloud-builders/gcloud'
