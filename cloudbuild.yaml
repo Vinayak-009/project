@@ -1,14 +1,55 @@
 steps:
-  # Step 1: Build Docker image
+  # Step 1: Create GKE Cluster
+  - name: 'gcr.io/cloud-builders/gcloud'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        gcloud container clusters create cluster-1 --region=us-central1 --num-nodes=2
+
+  # Step 2: Authenticate with GKE
+  - name: 'gcr.io/cloud-builders/gcloud'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        gcloud container clusters get-credentials cluster-1 --region=us-central1
+
+  # Step 3: Pull Docker image
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'gcr.io/black-beach-416616/project:$COMMIT_SHA', '.']
-  # Step 2: Push Docker image to Google Container Registry (GCR)
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        docker pull gcr.io/black-beach-416616/project:latest || exit 0
+
+  # Step 4: Build Docker image
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'gcr.io/black-beach-416616/project:$COMMIT_SHA']
-  # Step 3: Authenticate with GKE and apply Kubernetes manifests
+    args:
+      - 'build'
+      - '-t'
+      - 'gcr.io/black-beach-416616/project:$TAG_NAME'
+      - '-t'
+      - 'gcr.io/black-beach-416616/project:latest'
+      - '.'
+
+  # Step 5: Apply Kubernetes manifests
   - name: 'gcr.io/cloud-builders/kubectl'
-    args: ['apply', '-f', 'kubernetes-manifests/']
-    env:
-      - 'CLOUDSDK_CONTAINER_USE_CLIENT_CERTIFICATE=True'
-      - 'KUBECONFIG=/builder/home/.kube/config'
-timeout: '1600s'
+    args:
+      - 'apply'
+      - '-f'
+      - 'kubernetes-manifests/'
+
+  # Step 6: Set image for deployment
+  - name: 'gcr.io/cloud-builders/kubectl'
+    args:
+      - 'set'
+      - 'image'
+      - 'deployment'
+      - 'project'
+      - 'project=gcr.io/black-beach-416616/project:$TAG_NAME'
+
+# Push images to Google Container Registry with tags
+images:
+  - 'gcr.io/black-beach-416616/project:$TAG_NAME'
+  - 'gcr.io/black-beach-416616/project:latest'
