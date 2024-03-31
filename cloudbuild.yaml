@@ -1,3 +1,9 @@
+# This service account needs permissions to perform build actions (GKE, Docker, etc.)
+serviceAccount: "547284571983-compute@developer.gserviceaccount.com"
+
+# Store logs in the specified Cloud Storage bucket
+logsBucket: "gs://transfer-proj"
+
 steps:
   # Step 1: Create GKE Cluster
   - name: 'gcr.io/cloud-builders/gcloud'
@@ -53,8 +59,3 @@ steps:
 images:
   - 'gcr.io/black-beach-416616/project:$BRANCH_NAME-$COMMIT_SHA'
   - 'gcr.io/black-beach-416616/project:latest'
-
-build:
-  # ... other build options
-  serviceAccount: "547284571983-compute@developer.gserviceaccount.com"  # Assuming you have a service account set
-  logsBucket: "gs://transfer-proj"
