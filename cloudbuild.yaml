@@ -13,16 +13,7 @@ steps:
       - |
         gcloud container clusters get-credentials cluster-1 --region=us-central1
 
-
-  # Step 2: Authenticate with GKE
-  - name: 'gcr.io/cloud-builders/gcloud'
-    entrypoint: 'bash'
-    args:
-      - '-c'
-      - |
-        gcloud container clusters get-credentials cluster-1 --region=us-central1
-
-  # Step 3: Pull Docker image
+  # Step 2: Pull Docker image
   - name: 'gcr.io/cloud-builders/docker'
     entrypoint: 'bash'
     args:
@@ -30,7 +21,7 @@ steps:
       - |
         docker pull gcr.io/black-beach-416616/project:$BRANCH_NAME-$COMMIT_SHA || exit 0
 
-  # Step 4: Build Docker image
+  # Step 3: Build Docker image
   - name: 'gcr.io/cloud-builders/docker'
     args:
       - 'build'
@@ -40,15 +31,19 @@ steps:
       - 'gcr.io/black-beach-416616/project:latest'
       - '.'
 
-  # Step 5: Apply Kubernetes manifests
+  # Step 4: Apply Kubernetes manifests
   - name: 'gcr.io/cloud-builders/kubectl'
     args:
       - 'apply'
       - '-f'
       - 'kubernetes-manifests/'
 
-  # Step 6: Set image for deployment
+  # Step 5: Set image for deployment
   - name: 'gcr.io/cloud-builders/kubectl'
+    env:
+      - CLOUDSDK_COMPUTE_REGION=us-central1
+      - CLOUDSDK_COMPUTE_ZONE=us-central1-a
+      - CLOUDSDK_CONTAINER_CLUSTER=cluster-1
     args:
       - 'set'
       - 'image'
