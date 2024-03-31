@@ -13,7 +13,7 @@ steps:
       - |
         export CLOUDSDK_COMPUTE_REGION=us-central1
         export CLOUDSDK_COMPUTE_ZONE=us-central1-a  # Replace with your GKE cluster's zone
-        gcloud container clusters get-credentials $CLOUDSDK_CONTAINER_CLUSTER --region=$CLOUDSDK_COMPUTE_REGION
+        gcloud container clusters get-credentials cluster-1 --region=$CLOUDSDK_COMPUTE_REGION
 
   # Step 2: Pull Docker image
   - name: 'gcr.io/cloud-builders/docker'
