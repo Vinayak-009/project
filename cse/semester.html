@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"> 
+</head>
+<body>
+    <section class="sub-header">
+        <nav>
+            <a href="index.html"><img src="/images/new-logo.png" alt="Logo"></a> 
+            <div class="nav-links" id="navlinks">
+                <i class="fa fa-times" onclick="hideMenu()"></i> 
+                <ul>
+                    <li><a href="../index.html">HOME</a></li> 
+                    <li><a href="../about.html">ABOUT</a></li>
+                    <li><a href="../courses.html">COURSE</a></li>
+                    <li><a href="../contact.html">CONTACT</a></li>
+                </ul>
+            </div>
+            <i class="fa fa-bars" onclick="showMenu()"></i> 
+        </nav>
+
+    </section>
+
+    <!-- -------Courses------ -->
+
+    <section class="course">
+        <h1>CSE Semesters</h1>
+        
+        <div class="row">
+            <div class="course-col">
+                <h3>1st SEM <br><img src="/images/computer-science.png"> </h3>
+                
+                <a href="subjects/sem1.html" class="hero-btn">Click Me</a>
+            </div>
+
+            <div class="course-col">
+                <h3>2nd SEM <br><img src="/images/computer-science.png"> </h3>
+                
+                <a href="subjects/sem2.html" class="hero-btn">Click Me</a>
+            </div>
+
+            <div class="course-col">
+                <h3>3rd SEM <br><img src="/images/computer-science.png"> </h3>
+                
+                <a href="subjects/sem3.html" class="hero-btn">Click Me</a>
+            </div>
+
+
+           </div>
+
+
+        <div class="row">
+            <div class="course-col">
+                <h3>4th SEM <br><img src="/images/computer-science.png"> </h3>
+                
+                <a href="subjects/sem4.html" class="hero-btn">Click Me</a>
+            </div>
+
+            <div class="course-col">
+                <h3>5th SEM <br><img src="/images/computer-science.png"> </h3>
+                
+                <a href="subjects/sem5.html" class="hero-btn">Click Me</a>
+            </div>
+
+            <div class="course-col">
+                <h3>6th SEM <br><img src="/images/computer-science.png"> </h3>
+                
+                <a href="subjects/sem6.html" class="hero-btn">Click Me</a>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="course-col">
+                <h3>7th SEM <br><img src="/images/computer-science.png"> </h3>
+                
+                <a href="subjects/sem7.html" class="hero-btn">Click Me</a>
+            </div>
+
+            <div class="course-col">
+                <h3>8th SEM <br><img src="/images/computer-science.png"> </h3>
+                
+                <a href="subjects/sem8.html" class="hero-btn">Click Me</a>
+            </div>
+            
+        </div>
+    
+    
+    </section>
+
+
+<!-- -----------footer----- -->
+
+<section class="footer">
+    <h4>About Us</h4>
+   
+
+    <div class="icons">
+        <i class="fab fa-facebook"></i> 
+        <i class="fab fa-twitter"></i> 
+        <a href="https://www.instagram.com/vinayak_1629/"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/vinayak-sharma-23787a1a6/"><i class="fab fa-linkedin"></i></a> 
+    </div>
+    <p> <b>Made by Vinayak and Parameesh</b></p>
+</section>
+
+    <!-- JavaScript code -->
+    <script>
+        var navlinks = document.getElementById("navlinks");
+
+        function showMenu() {
+            navlinks.style.right = "0";
+        }
+
+        function hideMenu() {
+            navlinks.style.right = "-200px";
+        }
+    </script>
+</body>
+</html>

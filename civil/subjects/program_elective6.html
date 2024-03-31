@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University</title>
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"> <!-- Use the correct Font Awesome version -->
+</head>
+<body>
+    <section class="sub-header">
+        <nav>
+            <a href="index.html"><img src="/images/new-logo.png" alt="Logo"></a> <!-- Add alternative text for the logo -->
+            <div class="nav-links" id="navlinks">
+                <i class="fa fa-times" onclick="hideMenu()"></i> <!-- Use the correct class name for the Font Awesome icon -->
+                <ul>
+                    <li><a href="../../index.html">HOME</a></li> <!-- Add appropriate URLs for each link -->
+                    <li><a href="../../about.html">ABOUT</a></li>
+                    <li><a href="../../courses.html">COURSE</a></li>
+                    <!-- <li><a href="#">BLOG</a></li> -->
+                    <li><a href="../../contact.html">CONTACT</a></li>
+                </ul>
+            </div>
+            <i class="fa fa-bars" onclick="showMenu()"></i> <!-- Use the correct class name for the Font Awesome icon -->
+        </nav>
+        <!-- <h1>Semeter 7</h1> -->
+
+    </section>
+
+    
+    <!-- -------Courses------ -->
+
+    <section class="course">
+        <h1>PROGRAM ELECTIVE-VI</h1>
+        <!-- <p>Lorem ipsum dolor sit amet.</p> -->
+
+
+        <div class="row">
+            <div class="course-col">
+                <h3>Wastewater Treatment</h3>
+                <h3><br><img src="/images/engineering.png"></h3>
+                <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi unde est laboriosam.</p> -->
+                <a href="subjects/sem1.html" class="hero-btn">Click Me</a>
+            </div>
+
+            <div class="course-col"> <!-- Uncomment this block if needed -->
+                <h3>Traffic Engineering and Management</h3>
+                <h3><br><img src="/images/engineering.png"></h3>
+                <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi unde est laboriosam.</p> -->
+                <a href="#" class="hero-btn">Click Me</a>
+            </div>
+
+            <div class="course-col"> <!-- Uncomment this block if needed -->
+                <h3>Geosynthetics Engineering</h3>
+                <h3><br><img src="/images/engineering.png"></h3>
+                <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi unde est laboriosam.</p> -->
+                <a href="#" class="hero-btn">Click Me</a>
+            </div>
+
+
+           </div>
+
+
+       
+
+        </section>
+
+
+
+
+
+
+
+
+
+        <!-- -----------footer----- -->
+    
+        <section class="footer">
+            <h4>About Us</h4>
+            <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. <br>Autem repellat nemo soluta modi possimus laborum reprehenderit qui praesentium dolore obcaecati.</p> -->
+    
+            <div class="icons">
+                <i class="fab fa-facebook"></i> <!-- Use the correct class name for the Font Awesome icon -->
+                <i class="fab fa-twitter"></i> <!-- Use the correct class name for the Font Awesome icon -->
+                <i class="fab fa-instagram"></i> <!-- Use the correct class name for the Font Awesome icon -->
+                <i class="fab fa-linkedin"></i> <!-- Use the correct class name for the Font Awesome icon -->
+            </div>
+            <p> <b>Made by Vinayak and Parameesh</b></p>
+        </section>
+    
+        <!-- JavaScript code -->
+        <script>
+            var navlinks = document.getElementById("navlinks");
+    
+            function showMenu() {
+                navlinks.style.right = "0";
+            }
+    
+            function hideMenu() {
+                navlinks.style.right = "-200px";
+            }
+        </script>
+    </body>
+    </html>
+    

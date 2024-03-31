@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University</title>
+
+    <!-- All Css -->
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">   <!-- for adding icons-->
+</head>
+<body>
+    <section class="header">
+        <nav>
+            <a href="index.html"><img src="images/new-logo.png" alt="Logo"></a> 
+            <div class="nav-links" id="navlinks">
+                <i class="fa fa-times" onclick="hideMenu()"></i> <!--icon to hide menu-->
+                <ul>
+                    <li><a href="index.html">HOME</a></li> 
+                    <li><a href="about.html">ABOUT</a></li>
+                    <li><a href="courses.html">COURSE</a></li>
+                    <li><a href="contact.html">CONTACT</a></li>
+                </ul>
+            </div>
+            <i class="fa fa-bars" onclick="showMenu()"></i> <!--icon to show menu-->
+        </nav>
+
+    </section>
+
+<!-- -------    course------------ -->
+
+    <section class="course">
+        <h1>Courses We offer</h1>
+
+
+        <div class="row">
+            <div class="course-col">
+                <h3>CIVIL  </h3>
+                <p><img src="images/worker (1).png"></p>
+                <a href="civil/semester.html" class="hero-btn">Click Me</a>
+            </div>
+
+            <div class="course-col">
+                <h3>CSE</h3>
+                <p><img src="images/troubleshooting (1).png"></p>
+                <a href="cse/semester.html"class="hero-btn">Click Me</a>
+            </div>
+
+
+        </div>
+    </section>
+
+
+    <!-- -----Contact Us----- -->
+
+    <section class="cta">
+  
+        <a href="contact.html" class="hero-btn">CONTACT US</a> 
+    </section>
+
+    <!-- -----------footer----- -->
+
+    <section class="footer">
+        <h4>About Us</h4>
+       
+
+        <div class="icons">
+            <i class="fab fa-facebook"></i> 
+            <i class="fab fa-twitter"></i> 
+            <a href="https://www.instagram.com/vinayak_1629/"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/in/vinayak-sharma-23787a1a6/"><i class="fab fa-linkedin"></i></a> 
+        </div>
+        <p> <b>Made by Vinayak and Parameesh</b></p>
+    </section>
+
+    <!-- JavaScript code To add click functionality in show and hide menu -->
+    <script>
+        var navlinks = document.getElementById("navlinks");
+
+        function showMenu() {
+            navlinks.style.right = "0";
+        }
+
+        function hideMenu() {
+            navlinks.style.right = "-200px";
+        }
+    </script>
+</body>
+</html>
