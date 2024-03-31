@@ -53,3 +53,8 @@ steps:
 images:
   - 'gcr.io/black-beach-416616/project:$BRANCH_NAME-$COMMIT_SHA'
   - 'gcr.io/black-beach-416616/project:latest'
+
+build:
+  # ... other build options
+  serviceAccount: "547284571983-compute@developer.gserviceaccount.com"  # Assuming you have a service account set
+  logsBucket: "gs://transfer-proj"
