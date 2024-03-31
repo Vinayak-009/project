@@ -5,13 +5,16 @@ serviceAccount: "547284571983-compute@developer.gserviceaccount.com"
 logsBucket: "gs://transfer-proj"
 
 steps:
-  # Step 1: Authenticate with GKE
-  - name: 'gcr.io/cloud-builders/gcloud'
+  # Step 1: Authenticate with GKE and set cluster environment variables
+  - name: 'gcr.io/cloud-builders/kubectl'
     entrypoint: 'bash'
     args:
       - '-c'
       - |
-        gcloud container clusters get-credentials cluster-1 --region=us-central1
+        export CLOUDSDK_COMPUTE_REGION=us-central1
+        export CLOUDSDK_COMPUTE_ZONE=us-central1-a  # Replace with your GKE cluster's zone
+        export CLOUDSDK_CONTAINER_CLUSTER=cluster-1  # Replace with your GKE cluster's name
+        gcloud container clusters get-credentials $CLOUDSDK_CONTAINER_CLUSTER --region=$CLOUDSDK_COMPUTE_REGION
 
   # Step 2: Pull Docker image
   - name: 'gcr.io/cloud-builders/docker'
@@ -33,23 +36,25 @@ steps:
 
   # Step 4: Apply Kubernetes manifests
   - name: 'gcr.io/cloud-builders/kubectl'
+    entrypoint: 'bash'
     args:
-      - 'apply'
-      - '-f'
-      - 'kubernetes-manifests/'
+      - '-c'
+      - |
+        export CLOUDSDK_COMPUTE_REGION=us-central1
+        export CLOUDSDK_COMPUTE_ZONE=us-central1-a  # Replace with your GKE cluster's zone
+        export CLOUDSDK_CONTAINER_CLUSTER=cluster-1  # Replace with your GKE cluster's name
+        kubectl apply -f kubernetes-manifests/
 
   # Step 5: Set image for deployment
   - name: 'gcr.io/cloud-builders/kubectl'
-    env:
-      - CLOUDSDK_COMPUTE_REGION=us-central1
-      - CLOUDSDK_COMPUTE_ZONE=us-central1-a
-      - CLOUDSDK_CONTAINER_CLUSTER=cluster-1
+    entrypoint: 'bash'
     args:
-      - 'set'
-      - 'image'
-      - 'deployment'
-      - 'project'
-      - 'project=gcr.io/black-beach-416616/project:$BRANCH_NAME-$COMMIT_SHA'
+      - '-c'
+      - |
+        export CLOUDSDK_COMPUTE_REGION=us-central1
+        export CLOUDSDK_COMPUTE_ZONE=us-central1-a  # Replace with your GKE cluster's zone
+        export CLOUDSDK_CONTAINER_CLUSTER=cluster-1  # Replace with your GKE cluster's name
+        kubectl set image deployment project project=gcr.io/black-beach-416616/project:$BRANCH_NAME-$COMMIT_SHA
 
 # Push images to Google Container Registry with tags
 images:
