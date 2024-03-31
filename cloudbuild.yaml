@@ -21,7 +21,7 @@ steps:
     args:
       - '-c'
       - |
-        docker pull gcr.io/black-beach-416616/project:latest || exit 0
+        docker pull gcr.io/black-beach-416616/project:$BRANCH_NAME-$COMMIT_SHA || exit 0
 
   # Step 4: Build Docker image
   - name: 'gcr.io/cloud-builders/docker'
@@ -47,13 +47,9 @@ steps:
       - 'image'
       - 'deployment'
       - 'project'
-      - 'project=gcr.io/black-beach-416616/project:$TAG_NAME'
+      - 'project=gcr.io/black-beach-416616/project:$BRANCH_NAME-$COMMIT_SHA'
 
 # Push images to Google Container Registry with tags
 images:
-  - 'gcr.io/black-beach-416616/project:$TAG_NAME'
+  - 'gcr.io/black-beach-416616/project:$BRANCH_NAME-$COMMIT_SHA'
   - 'gcr.io/black-beach-416616/project:latest'
-  
-options:
-  logging: CLOUD_LOGGING_ONLY
-  logsBucket: transfer-proj
