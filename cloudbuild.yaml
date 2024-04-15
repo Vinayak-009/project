@@ -1,5 +1,5 @@
 # This service account needs permissions to perform build actions (GKE, Docker, etc.)
-serviceAccount: "547284571983-compute@developer.gserviceaccount.com"
+serviceAccount: "#"
 
 # Store logs in the specified Cloud Storage bucket
 logsBucket: "gs://transfer-proj"
